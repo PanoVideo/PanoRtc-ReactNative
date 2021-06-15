@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D76FEE225AFF94D006E259B /* RtcVideoStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FED925AFF94D006E259B /* RtcVideoStreamManager.swift */; };
+		4D76FEE325AFF94D006E259B /* RtcNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEDA25AFF94D006E259B /* RtcNetworkManager.swift */; };
+		4D76FEE425AFF94D006E259B /* RtcAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEDB25AFF94D006E259B /* RtcAnnotationManager.swift */; };
+		4D76FEE525AFF94D006E259B /* RtcWhiteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEDC25AFF94D006E259B /* RtcWhiteboard.swift */; };
+		4D76FEE625AFF94D006E259B /* DelegateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEDD25AFF94D006E259B /* DelegateHandler.swift */; };
+		4D76FEE725AFF94D006E259B /* RtcEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEDE25AFF94D006E259B /* RtcEngine.swift */; };
+		4D76FEE825AFF94D006E259B /* ObjectConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEDF25AFF94D006E259B /* ObjectConverter.swift */; };
+		4D76FEE925AFF94D006E259B /* Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEE025AFF94D006E259B /* Callback.swift */; };
+		4D76FEEA25AFF94D006E259B /* RtcAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FEE125AFF94D006E259B /* RtcAnnotation.swift */; };
+		4D76FF1D25AFF9E5006E259B /* PromiseCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FF1C25AFF9E5006E259B /* PromiseCallback.swift */; };
+		4D76FF4F25B01C71006E259B /* RCTPanoRtcEngineModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FF4E25B01C71006E259B /* RCTPanoRtcEngineModule.swift */; };
+		4D76FF5225B01ED9006E259B /* RCTPanoRtcEngineModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D76FF5125B01ED9006E259B /* RCTPanoRtcEngineModuleBridge.m */; };
+		4D96B84025B291D200CD8912 /* RCTPanoRtcSurfaceViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96B83E25B291D200CD8912 /* RCTPanoRtcSurfaceViewManager.swift */; };
+		4D96B84125B291D200CD8912 /* RCTPanoRtcSurfaceViewManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D96B83F25B291D200CD8912 /* RCTPanoRtcSurfaceViewManagerBridge.m */; };
+		4DC34FCD25BA727E00E1480D /* RCTPanoRtcAnnotationManagerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FCC25BA727E00E1480D /* RCTPanoRtcAnnotationManagerModule.swift */; };
+		4DC34FD025BA729D00E1480D /* RCTPanoRtcAnnotationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FCF25BA729D00E1480D /* RCTPanoRtcAnnotationModule.swift */; };
+		4DC34FD325BA72C100E1480D /* RCTPanoRtcNetworkManagerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FD225BA72C100E1480D /* RCTPanoRtcNetworkManagerModule.swift */; };
+		4DC34FD625BA72EA00E1480D /* RCTPanoRtcVideoStreamManagerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FD525BA72EA00E1480D /* RCTPanoRtcVideoStreamManagerModule.swift */; };
+		4DC34FD925BA730600E1480D /* RCTPanoRtcWhiteboardModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FD825BA730600E1480D /* RCTPanoRtcWhiteboardModule.swift */; };
+		4DC34FDC25BA734900E1480D /* RCTPanoRtcAnnotationManagerModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FDB25BA734900E1480D /* RCTPanoRtcAnnotationManagerModuleBridge.m */; };
+		4DC34FDF25BA736900E1480D /* RCTPanoRtcAnnotationModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FDE25BA736900E1480D /* RCTPanoRtcAnnotationModuleBridge.m */; };
+		4DC34FE225BA737B00E1480D /* RCTPanoRtcNetworkManagerModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FE125BA737B00E1480D /* RCTPanoRtcNetworkManagerModuleBridge.m */; };
+		4DC34FE525BA738D00E1480D /* RCTPanoRtcVideoStreamManagerModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FE425BA738D00E1480D /* RCTPanoRtcVideoStreamManagerModuleBridge.m */; };
+		4DC34FE825BA73A000E1480D /* RCTPanoRtcWhiteboardModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FE725BA73A000E1480D /* RCTPanoRtcWhiteboardModuleBridge.m */; };
+		4DC34FEB25BA745E00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FEA25BA745E00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManager.swift */; };
+		4DC34FEE25BA747B00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC34FED25BA747B00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManagerBridge.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58B511D91A9E6C8500147676 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		134814201AA4EA6300B7C361 /* libPanoRtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPanoRtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D76FED925AFF94D006E259B /* RtcVideoStreamManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RtcVideoStreamManager.swift; sourceTree = "<group>"; };
+		4D76FEDA25AFF94D006E259B /* RtcNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RtcNetworkManager.swift; sourceTree = "<group>"; };
+		4D76FEDB25AFF94D006E259B /* RtcAnnotationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RtcAnnotationManager.swift; sourceTree = "<group>"; };
+		4D76FEDC25AFF94D006E259B /* RtcWhiteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RtcWhiteboard.swift; sourceTree = "<group>"; };
+		4D76FEDD25AFF94D006E259B /* DelegateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateHandler.swift; sourceTree = "<group>"; };
+		4D76FEDE25AFF94D006E259B /* RtcEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RtcEngine.swift; sourceTree = "<group>"; };
+		4D76FEDF25AFF94D006E259B /* ObjectConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectConverter.swift; sourceTree = "<group>"; };
+		4D76FEE025AFF94D006E259B /* Callback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Callback.swift; sourceTree = "<group>"; };
+		4D76FEE125AFF94D006E259B /* RtcAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RtcAnnotation.swift; sourceTree = "<group>"; };
+		4D76FF1C25AFF9E5006E259B /* PromiseCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseCallback.swift; sourceTree = "<group>"; };
+		4D76FF4E25B01C71006E259B /* RCTPanoRtcEngineModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcEngineModule.swift; sourceTree = "<group>"; };
+		4D76FF5125B01ED9006E259B /* RCTPanoRtcEngineModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcEngineModuleBridge.m; sourceTree = "<group>"; };
+		4D96B83E25B291D200CD8912 /* RCTPanoRtcSurfaceViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcSurfaceViewManager.swift; sourceTree = "<group>"; };
+		4D96B83F25B291D200CD8912 /* RCTPanoRtcSurfaceViewManagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcSurfaceViewManagerBridge.m; sourceTree = "<group>"; };
+		4DC34FCC25BA727E00E1480D /* RCTPanoRtcAnnotationManagerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcAnnotationManagerModule.swift; sourceTree = "<group>"; };
+		4DC34FCF25BA729D00E1480D /* RCTPanoRtcAnnotationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcAnnotationModule.swift; sourceTree = "<group>"; };
+		4DC34FD225BA72C100E1480D /* RCTPanoRtcNetworkManagerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcNetworkManagerModule.swift; sourceTree = "<group>"; };
+		4DC34FD525BA72EA00E1480D /* RCTPanoRtcVideoStreamManagerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcVideoStreamManagerModule.swift; sourceTree = "<group>"; };
+		4DC34FD825BA730600E1480D /* RCTPanoRtcWhiteboardModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcWhiteboardModule.swift; sourceTree = "<group>"; };
+		4DC34FDB25BA734900E1480D /* RCTPanoRtcAnnotationManagerModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcAnnotationManagerModuleBridge.m; sourceTree = "<group>"; };
+		4DC34FDE25BA736900E1480D /* RCTPanoRtcAnnotationModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcAnnotationModuleBridge.m; sourceTree = "<group>"; };
+		4DC34FE125BA737B00E1480D /* RCTPanoRtcNetworkManagerModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcNetworkManagerModuleBridge.m; sourceTree = "<group>"; };
+		4DC34FE425BA738D00E1480D /* RCTPanoRtcVideoStreamManagerModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcVideoStreamManagerModuleBridge.m; sourceTree = "<group>"; };
+		4DC34FE725BA73A000E1480D /* RCTPanoRtcWhiteboardModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcWhiteboardModuleBridge.m; sourceTree = "<group>"; };
+		4DC34FEA25BA745E00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTPanoRtcWhiteboardSurfaceViewManager.swift; sourceTree = "<group>"; };
+		4DC34FED25BA747B00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTPanoRtcWhiteboardSurfaceViewManagerBridge.m; sourceTree = "<group>"; };
+		F4FF95D5245B92E700C19C63 /* RCTPanoRtc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCTPanoRtc-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134814211AA4EA7D00B7C361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				134814201AA4EA6300B7C361 /* libPanoRtc.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D76FED725AFF929006E259B /* PanoRtc */ = {
+			isa = PBXGroup;
+			children = (
+				4D76FF1B25AFF9E5006E259B /* React */,
+				4D76FED825AFF94D006E259B /* Base */,
+			);
+			path = PanoRtc;
+			sourceTree = "<group>";
+		};
+		4D76FED825AFF94D006E259B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4D76FED925AFF94D006E259B /* RtcVideoStreamManager.swift */,
+				4D76FEDA25AFF94D006E259B /* RtcNetworkManager.swift */,
+				4D76FEDB25AFF94D006E259B /* RtcAnnotationManager.swift */,
+				4D76FEDC25AFF94D006E259B /* RtcWhiteboard.swift */,
+				4D76FEDD25AFF94D006E259B /* DelegateHandler.swift */,
+				4D76FEDE25AFF94D006E259B /* RtcEngine.swift */,
+				4D76FEDF25AFF94D006E259B /* ObjectConverter.swift */,
+				4D76FEE025AFF94D006E259B /* Callback.swift */,
+				4D76FEE125AFF94D006E259B /* RtcAnnotation.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4D76FF1B25AFF9E5006E259B /* React */ = {
+			isa = PBXGroup;
+			children = (
+				4D96B83E25B291D200CD8912 /* RCTPanoRtcSurfaceViewManager.swift */,
+				4D96B83F25B291D200CD8912 /* RCTPanoRtcSurfaceViewManagerBridge.m */,
+				4D76FF1C25AFF9E5006E259B /* PromiseCallback.swift */,
+				F4FF95D5245B92E700C19C63 /* RCTPanoRtc-Bridging-Header.h */,
+				4D76FF4E25B01C71006E259B /* RCTPanoRtcEngineModule.swift */,
+				4D76FF5125B01ED9006E259B /* RCTPanoRtcEngineModuleBridge.m */,
+				4DC34FCC25BA727E00E1480D /* RCTPanoRtcAnnotationManagerModule.swift */,
+				4DC34FDB25BA734900E1480D /* RCTPanoRtcAnnotationManagerModuleBridge.m */,
+				4DC34FCF25BA729D00E1480D /* RCTPanoRtcAnnotationModule.swift */,
+				4DC34FDE25BA736900E1480D /* RCTPanoRtcAnnotationModuleBridge.m */,
+				4DC34FD225BA72C100E1480D /* RCTPanoRtcNetworkManagerModule.swift */,
+				4DC34FE125BA737B00E1480D /* RCTPanoRtcNetworkManagerModuleBridge.m */,
+				4DC34FD525BA72EA00E1480D /* RCTPanoRtcVideoStreamManagerModule.swift */,
+				4DC34FE425BA738D00E1480D /* RCTPanoRtcVideoStreamManagerModuleBridge.m */,
+				4DC34FD825BA730600E1480D /* RCTPanoRtcWhiteboardModule.swift */,
+				4DC34FE725BA73A000E1480D /* RCTPanoRtcWhiteboardModuleBridge.m */,
+				4DC34FEA25BA745E00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManager.swift */,
+				4DC34FED25BA747B00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManagerBridge.m */,
+			);
+			path = React;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				4D76FED725AFF929006E259B /* PanoRtc */,
+				134814211AA4EA7D00B7C361 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58B511DA1A9E6C8500147676 /* PanoRtc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "PanoRtc" */;
+			buildPhases = (
+				58B511D71A9E6C8500147676 /* Sources */,
+				58B511D81A9E6C8500147676 /* Frameworks */,
+				58B511D91A9E6C8500147676 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PanoRtc;
+			productName = RCTDataManager;
+			productReference = 134814201AA4EA6300B7C361 /* libPanoRtc.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B511D31A9E6C8500147676 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					58B511DA1A9E6C8500147676 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "PanoRtc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 58B511D21A9E6C8500147676;
+			productRefGroup = 58B511D21A9E6C8500147676;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58B511DA1A9E6C8500147676 /* PanoRtc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58B511D71A9E6C8500147676 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D76FF1D25AFF9E5006E259B /* PromiseCallback.swift in Sources */,
+				4DC34FDC25BA734900E1480D /* RCTPanoRtcAnnotationManagerModuleBridge.m in Sources */,
+				4D76FF4F25B01C71006E259B /* RCTPanoRtcEngineModule.swift in Sources */,
+				4D76FEE525AFF94D006E259B /* RtcWhiteboard.swift in Sources */,
+				4D76FEE425AFF94D006E259B /* RtcAnnotationManager.swift in Sources */,
+				4D76FEE725AFF94D006E259B /* RtcEngine.swift in Sources */,
+				4DC34FEE25BA747B00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManagerBridge.m in Sources */,
+				4D76FEE325AFF94D006E259B /* RtcNetworkManager.swift in Sources */,
+				4D76FF5225B01ED9006E259B /* RCTPanoRtcEngineModuleBridge.m in Sources */,
+				4DC34FE525BA738D00E1480D /* RCTPanoRtcVideoStreamManagerModuleBridge.m in Sources */,
+				4D76FEE925AFF94D006E259B /* Callback.swift in Sources */,
+				4DC34FD025BA729D00E1480D /* RCTPanoRtcAnnotationModule.swift in Sources */,
+				4D76FEE225AFF94D006E259B /* RtcVideoStreamManager.swift in Sources */,
+				4DC34FD325BA72C100E1480D /* RCTPanoRtcNetworkManagerModule.swift in Sources */,
+				4DC34FE825BA73A000E1480D /* RCTPanoRtcWhiteboardModuleBridge.m in Sources */,
+				4D76FEE625AFF94D006E259B /* DelegateHandler.swift in Sources */,
+				4D76FEEA25AFF94D006E259B /* RtcAnnotation.swift in Sources */,
+				4DC34FD925BA730600E1480D /* RCTPanoRtcWhiteboardModule.swift in Sources */,
+				4DC34FD625BA72EA00E1480D /* RCTPanoRtcVideoStreamManagerModule.swift in Sources */,
+				4D76FEE825AFF94D006E259B /* ObjectConverter.swift in Sources */,
+				4DC34FEB25BA745E00E1480D /* RCTPanoRtcWhiteboardSurfaceViewManager.swift in Sources */,
+				4DC34FDF25BA736900E1480D /* RCTPanoRtcAnnotationModuleBridge.m in Sources */,
+				4D96B84025B291D200CD8912 /* RCTPanoRtcSurfaceViewManager.swift in Sources */,
+				4DC34FE225BA737B00E1480D /* RCTPanoRtcNetworkManagerModuleBridge.m in Sources */,
+				4DC34FCD25BA727E00E1480D /* RCTPanoRtcAnnotationManagerModule.swift in Sources */,
+				4D96B84125B291D200CD8912 /* RCTPanoRtcSurfaceViewManagerBridge.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		58B511ED1A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		58B511EE1A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58B511F01A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = PanoRtc;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PanoRtc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = PanoRtc;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PanoRtc-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "PanoRtc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511ED1A9E6C8500147676 /* Debug */,
+				58B511EE1A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "PanoRtc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511F01A9E6C8500147676 /* Debug */,
+				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
+}

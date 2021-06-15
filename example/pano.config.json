@@ -1,0 +1,7 @@
+{
+  "//appId": "Please refer to Glossary to understand the meaning of App ID, Channel ID, Token, User ID, and User Name:：https://developer.pano.video/getting-started/terms/",
+  "appId": YOUR_APP_ID,
+  "//token": "You can use temporary token for temporary testing: https://developer.pano.video/getting-started/firstapp/#14-%E7%94%9F%E6%88%90%E4%B8%B4%E6%97%B6token",
+  "token": YOUR_TOEKN,
+  "userId": YOUR_USER_ID
+}

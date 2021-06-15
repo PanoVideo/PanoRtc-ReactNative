@@ -1,0 +1,4 @@
+{
+  "entryPoints": ["./lib/typescript"],
+  "out": "docs/api"
+}
