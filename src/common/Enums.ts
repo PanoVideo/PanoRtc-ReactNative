@@ -156,6 +156,10 @@ export enum ChannelService {
    * @~english Channel enable whiteboard service. @~chinese 频道启用白板服务。
    */
   Whiteboard = 0x00000002,
+  /**
+   * @~english Channel enable message service. @~chinese 频道启用消息服务。
+   */
+  Message = 0x00000004,
 }
 
 /**
@@ -1179,4 +1183,28 @@ export enum MessageServiceState {
   /** @~english The message service is available.
    *  @~chinese 消息服务可用。 */
   Available = 1,
+}
+
+/**
+ * @brief
+ * @~english Action type.
+ * @brief
+ * @~chinese 操作类型。
+ */
+export enum ActionType {
+  /**
+   * @~english Add action.
+   *  @~chinese 添加操作。
+   */
+  Add = 0,
+  /**
+   * @~english Update action.
+   * @~chinese 更新操作。
+   */
+  Update = 1,
+  /**
+   * @~english Remove action.
+   * @~chinese 删除操作。
+   */
+  Remove = 2,
 }

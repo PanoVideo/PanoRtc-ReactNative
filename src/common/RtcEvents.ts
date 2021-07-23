@@ -11,6 +11,7 @@ import type {
   RtcScreenSendStats,
   RtcScreenRecvStats,
   WBPageNumber,
+  RtcPropertyAction,
 } from './Objects';
 import type {
   AudioMixingState,
@@ -414,7 +415,7 @@ export type DocThumbnailReadyCallback =
    * @param fileId 白板文件ID
    * @param urls 缩略图url数组
    */
-  (fileId: String, urls: string[]) => void;
+  (fileId: string, urls: string[]) => void;
 export type UserIdWithStreamIdCallback =
   /**
    * @~english
@@ -445,6 +446,36 @@ export type MessageServiceStateCallback =
    * @param reason 状态变更的原因
    */
   (state: MessageServiceState, reason: ResultCode) => void;
+export type SubscribeResultCallback =
+  /**
+   * @~english
+   * @param topic The topic.
+   * @param result The result of topic subscription.
+   * @~chinese
+   * @param topic 主题标识。
+   * @param result 主题订阅的结果。
+   */
+  (topic: string, result: ResultCode) => void;
+export type TopicMessageCallback =
+  /**
+   * @~english
+   * @param topic The topic.
+   * @param userId The user who published the message.
+   * @param data The topic data.
+   * @~chinese
+   * @param topic 主题标识。
+   * @param userId 发布主题消息的用户标识。
+   * @param data 主题消息数据。
+   */
+  (topic: string, userId: string, data: string) => void;
+export type PropertyChangedCallback =
+  /**
+   * @~english
+   * @param props The property action array.
+   * @~chinese
+   * @param props 变更属性的数组。
+   */
+  (props: RtcPropertyAction[]) => void;
 export type ScreenCaptureStateCallback =
   /**
    * @~english
@@ -1372,4 +1403,28 @@ export interface RtcMessageServiceEventHandler {
    * @event onUserMessage
    */
   onUserMessage: MessageCallback;
+
+  /**
+   * @~english
+   * @brief Notification of topic message
+   * @~chinese
+   * @brief 用户主题消息通知
+   */
+  onSubscribeResult: SubscribeResultCallback;
+
+  /**
+   * @~english
+   * @brief Notification of topic message
+   * @~chinese
+   * @brief 用户主题消息通知
+   */
+  onTopicMessage: TopicMessageCallback;
+
+  /**
+   * @~english
+   * @brief Notification of message service property change.
+   * @~chinese
+   * @brief 消息服务属性变更通知。
+   */
+  onPropertyChanged: PropertyChangedCallback;
 }

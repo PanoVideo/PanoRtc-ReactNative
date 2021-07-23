@@ -14,11 +14,11 @@ import RtcEngineKit, {
   ChannelMode,
   ChannelService,
   WBToolType,
+  RtcWhiteboardSurfaceView,
+  RtcWhiteboard,
+  RtcAnnotationManager,
+  RtcAnnotation,
 } from '@pano.video/panortc-react-native-sdk';
-import { RtcWhiteboardSurfaceView } from '../../../src/common/RtcRenderView.native';
-import type RtcWhiteboard from '../../../src/common/RtcWhiteboard.native';
-import type RtcAnnotationManager from '../../../src/common/RtcAnnotationManager.native';
-import type RtcAnnotation from '../../../src/common/RtcAnnotation.native';
 import { ChannelInfo } from './ChannelInfo';
 
 const config = require('../../pano.config.json');
@@ -124,10 +124,7 @@ export default class Whiteboard extends Component<{}, State, any> {
       ]);
     }
 
-    let serviceFlags = new Set([
-      ChannelService.Media,
-      ChannelService.Whiteboard,
-    ]);
+    let serviceFlags = [ChannelService.Media, ChannelService.Whiteboard];
     let channelConfig = new RtcChannelConfig(
       ChannelMode.Meeting,
       serviceFlags,

@@ -18,6 +18,7 @@ import {
   QualityRating,
   WBConvertType,
   WBDocType,
+  ActionType,
 } from './Enums';
 
 /**
@@ -73,7 +74,7 @@ export class RtcChannelConfig {
    * @brief @~english Channel service serviceFlags. Default: kPanoChannelServiceMedia | kPanoChannelServiceWhiteboard.
    *        @~chinese 频道服务标志。默认值：kPanoChannelServiceMedia | kPanoChannelServiceWhiteboard。
    */
-  serviceFlags: Set<ChannelService>;
+  serviceFlags: Array<ChannelService>;
   /**
    * @brief @~english Whether to subscribe audio automatically. Default: YES.
    *        @~chinese 是否自动订阅所有音频。默认值：是。
@@ -91,10 +92,11 @@ export class RtcChannelConfig {
 
   constructor(
     mode: ChannelMode = ChannelMode.OneOnOne,
-    serviceFlags: Set<ChannelService> = new Set([
+    serviceFlags: Array<ChannelService> = [
       ChannelService.Media,
       ChannelService.Whiteboard,
-    ]),
+      ChannelService.Message,
+    ],
     subscribeAudioAll: boolean = true,
     userName?: string
   ) {
@@ -110,8 +112,8 @@ export class RtcChannelConfig {
  */
 export class RtcRenderConfig {
   /**
-   * @brief @~english The video profile. Default: kPanoProfileLowest.
-   *        @~chinese 视频设定档。默认值：kPanoProfileLowest。
+   * @brief @~english The video profile. Default: Standard.
+   *        @~chinese 视频设定档。默认值：Standard。
    */
   profileType: VideoProfileType;
   /**
@@ -130,7 +132,7 @@ export class RtcRenderConfig {
   mirror: boolean;
 
   constructor(
-    profileType: VideoProfileType = VideoProfileType.Lowest,
+    profileType: VideoProfileType = VideoProfileType.Standard,
     sourceMirror: boolean = false,
     scalingMode: VideoScalingMode = VideoScalingMode.Fit,
     mirror: boolean = false
@@ -1335,5 +1337,41 @@ export class RtcPoint {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
+  }
+}
+
+/**
+ * @~english
+ * @brief Property action type.
+ * @~chinese
+ * @brief 属性操作类型。
+ */
+export class RtcPropertyAction {
+  /**
+   * @~english
+   * @brief Action type.
+   * @~chinese
+   * @brief 操作类型。
+   */
+  type: ActionType;
+  /**
+   * @~english
+   * @brief The property name.
+   * @~chinese
+   * @brief 属性名字。
+   */
+  propName: string;
+  /**
+   * @~english
+   * @brief The property value.
+   * @~chinese
+   * @brief 属性值。
+   */
+  propValue: string;
+
+  constructor(type: ActionType, propName: string, propValue: string) {
+    this.type = type;
+    this.propName = propName;
+    this.propValue = propValue;
   }
 }

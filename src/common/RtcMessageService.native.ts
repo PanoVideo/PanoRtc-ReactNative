@@ -111,6 +111,27 @@ export default class RtcMessageService implements RtcMessageServiceInterface {
 
   /**
    * @~english
+   * @brief Set or update meeting property
+   * @param name  The property name.
+   * @param value The to be set. if value is null or length is 0, then the property will be removed from server.
+   * @return
+   *  - OK: Success
+   *  - others: Failure
+   * @~chinese
+   * @brief 设置或更属性
+   * @param name  属性名字。
+   * @param value 属性值。如果 value 为空，或者 length 为0，则此属性会被删除
+   * @return
+   *  - OK: 调用成功
+   *  - others: 调用失败
+   */
+  setProperty(name: string, value: string): Promise<ResultCode> {
+    let str_value = value;
+    return RtcMessageService._callMethod('setProperty', { name, str_value });
+  }
+
+  /**
+   * @~english
    * @brief Send message to specified user.
    * @param userId  The user ID.
    * @param message The message data in string format
@@ -130,7 +151,11 @@ export default class RtcMessageService implements RtcMessageServiceInterface {
    *       请确保消息大小不超过 4 KB。
    */
   sendMessage(message: string, userId: string): Promise<ResultCode> {
-    return RtcMessageService._callMethod('sendMessage', { message, userId });
+    let str_message = message;
+    return RtcMessageService._callMethod('sendMessage', {
+      str_message,
+      userId,
+    });
   }
 
   /**
@@ -157,15 +182,85 @@ export default class RtcMessageService implements RtcMessageServiceInterface {
     message: string,
     sendBack: boolean = true
   ): Promise<ResultCode> {
+    let str_message = message;
     return RtcMessageService._callMethod('broadcastMessage', {
-      message,
+      str_message,
       sendBack,
     });
+  }
+
+  /**
+   * @~english
+   * @brief Publish topic.
+   * @param topic The topic.
+   * @param data  The topic data.
+   * @return
+   *   - OK: Success
+   *   - others: Failure
+   * @note You can send messages at a maximum frequency of 150 calls every 3 seconds.
+   *       The maximum data length is 4 KB.
+   * @~chinese
+   * @brief 发布一个主题。
+   * @param topic 主题标识。
+   * @param data  主题数据。
+   * @return
+   *   - OK: 成功
+   *   - 其他: 失败
+   * @note 发送消息的调用频率上限为每 3 秒 150 次。
+   *       请确保二进制消息大小不超过 4 KB。
+   */
+  publish(topic: string, data: string): Promise<ResultCode> {
+    let str_data = data;
+    return RtcMessageService._callMethod('publish', { topic, str_data });
+  }
+
+  /**
+   * @~english
+   * @brief Subscribe topic.
+   * @param topic The topic.
+   * @return
+   *   - OK: Success
+   *   - others: Failure
+   * @~chinese
+   * @brief 订阅一个主题。
+   * @param topic 主题标识。
+   * @return
+   *   - OK: 成功
+   *   - 其他: 失败
+   */
+  subscribe(topic: string): Promise<ResultCode> {
+    return RtcMessageService._callMethod('subscribe', { topic });
+  }
+
+  /**
+   * @~english
+   * @brief Unsubscribe topic.
+   * @param topic The topic.
+   * @return
+   *   - OK: Success
+   *   - others: Failure
+   * @~chinese
+   * @brief 取消订阅一个主题。
+   * @param topic  主题标识。
+   * @return
+   *   - OK: 成功
+   *   - 其他: 失败
+   */
+  unsubscribe(topic: string): Promise<ResultCode> {
+    return RtcMessageService._callMethod('unsubscribe', { topic });
   }
 }
 
 interface RtcMessageServiceInterface {
+  setProperty(name: string, value: string): Promise<ResultCode>;
+
   sendMessage(message: string, userId: string): Promise<ResultCode>;
 
   broadcastMessage(message: string, sendBack: boolean): Promise<ResultCode>;
+
+  publish(topic: string, data: string): Promise<ResultCode>;
+
+  subscribe(topic: string): Promise<ResultCode>;
+
+  unsubscribe(topic: string): Promise<ResultCode>;
 }

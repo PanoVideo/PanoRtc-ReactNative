@@ -119,6 +119,9 @@ export default class JoinChannelVideo extends Component<{}, State, any> {
     this._engine?.addListener('onActiveSpeakerListUpdated', (result) => {
       console.info('onActiveSpeakerListUpdated', result);
     });
+    this._engine?.addListener('onVideoSendStats', (stats) => {
+      console.info('onVideoSendStats', stats);
+    });
   };
 
   _joinChannel = async () => {
@@ -129,10 +132,11 @@ export default class JoinChannelVideo extends Component<{}, State, any> {
       ]);
     }
 
-    let serviceFlags = new Set([
+    let serviceFlags = [
       ChannelService.Media,
       ChannelService.Whiteboard,
-    ]);
+      ChannelService.Message,
+    ];
     let channelConfig = new RtcChannelConfig(
       ChannelMode.Meeting,
       serviceFlags,

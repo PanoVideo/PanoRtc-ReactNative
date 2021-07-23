@@ -14,9 +14,9 @@ import RtcEngineKit, {
   ChannelMode,
   ChannelService,
   MessageServiceState,
+  RtcMessageService,
 } from '@pano.video/panortc-react-native-sdk';
 import { ChannelInfo } from './ChannelInfo';
-import type RtcMessageService from 'src/common/RtcMessageService.native';
 
 const config = require('../../pano.config.json');
 
@@ -87,19 +87,32 @@ export default class JoinChannelAudio extends Component<{}, State, any> {
     this._engine?.addListener('onActiveSpeakerListUpdated', (result) => {
       console.info('onActiveSpeakerListUpdated', result);
     });
+
     this._messageService?.addListener(
       'onServiceStateChanged',
       (state, reason) => {
-        console.info('onServiceStateChanged state: ', state);
-        console.info('onServiceStateChanged reason: ', reason);
+        console.info('onServiceStateChanged : ', state, reason);
         if (state == MessageServiceState.Available) {
-          this._messageService?.broadcastMessage('Test...', true);
+          this._messageService?.subscribe('test topic').then((result) => {
+            console.info('subscribe result', result);
+          });
         }
       }
     );
     this._messageService?.addListener('onUserMessage', (userId, message) => {
-      console.info('onUserMessage userId: ', userId);
-      console.info('onUserMessage message: ', message);
+      console.info('onUserMessage userId : ', userId);
+      console.info('onUserMessage message : ', message);
+    });
+    this._messageService?.addListener(
+      'onTopicMessage',
+      (topic, userId, data) => {
+        console.info('onTopicMessage topic : ', topic);
+        console.info('onTopicMessage userId : ', userId);
+        console.info('onTopicMessage data : ', data);
+      }
+    );
+    this._messageService?.addListener('onPropertyChanged', (props) => {
+      console.info('onPropertyChanged props : ', props);
     });
   };
 
@@ -110,10 +123,11 @@ export default class JoinChannelAudio extends Component<{}, State, any> {
       ]);
     }
 
-    let serviceFlags = new Set([
+    let serviceFlags = [
       ChannelService.Media,
       ChannelService.Whiteboard,
-    ]);
+      ChannelService.Message,
+    ];
     let channelConfig = new RtcChannelConfig(
       ChannelMode.Meeting,
       serviceFlags,
@@ -132,6 +146,37 @@ export default class JoinChannelAudio extends Component<{}, State, any> {
     await this._engine?.leaveChannel();
   };
 
+  _broadcastMessage = () => {
+    this._messageService
+      ?.broadcastMessage('test message', true)
+      .then((result) => {
+        console.info('broadcastMessage result', result);
+      });
+  };
+
+  _sendTopicMessage = () => {
+    this._messageService
+      ?.publish('test topic', 'test message')
+      .then((result) => {
+        console.info('publish result', result);
+      });
+  };
+
+  _setProperty = () => {
+    this._messageService
+      ?.setProperty('test name', 'test value')
+      .then((result) => {
+        console.info('setProperty result', result);
+        this._messageService?.setProperty('test name', '').then((result) => {
+          console.info('delete setProperty result', result);
+        });
+      });
+  };
+
+  _unjoinHandle = () => {
+    console.info('Please join channel.');
+  };
+
   render() {
     const { channelId, isJoined } = this.state;
     return (
@@ -145,6 +190,18 @@ export default class JoinChannelAudio extends Component<{}, State, any> {
           <Button
             onPress={isJoined ? this._leaveChannel : this._joinChannel}
             title={`${isJoined ? 'Leave' : 'Join'} channel`}
+          />
+          <Button
+            onPress={isJoined ? this._broadcastMessage : this._unjoinHandle}
+            title={`Broadcast Message`}
+          />
+          <Button
+            onPress={isJoined ? this._sendTopicMessage : this._unjoinHandle}
+            title={`Publish Message`}
+          />
+          <Button
+            onPress={isJoined ? this._setProperty : this._unjoinHandle}
+            title={`Set Property`}
           />
         </View>
       </View>

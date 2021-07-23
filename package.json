@@ -1,6 +1,6 @@
 {
   "name": "@pano.video/panortc-react-native-sdk",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "PanoRtc SDK For React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -41,9 +41,13 @@
     "chat",
     "live"
   ],
+  "repository": "https://github.com/PanoVideo/PanoRtc-ReactNative",
   "author": "pano.video",
   "license": "BSD",
   "homepage": "https://www.pano.video",
+  "bugs": {
+    "url": "https://github.com/PanoVideo/PanoRtc-ReactNative/issues"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

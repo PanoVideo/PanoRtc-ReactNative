@@ -9,7 +9,7 @@ import kotlin.reflect.full.declaredMemberFunctions
 import kotlin.reflect.jvm.javaMethod
 
 @ReactModule(name = PanoRtcMessageModule.REACT_CLASS)
-class PanoRtcMessageModule (reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class PanoRtcMessageModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
     companion object {
         const val REACT_CLASS = "PanoRtcMessageModule"
@@ -29,26 +29,69 @@ class PanoRtcMessageModule (reactContext: ReactApplicationContext) : ReactContex
         return service
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun emit(methodName: String, data: Map<String, Any?>?) {
-        if (methodName == "onUserMessage") {
-            val dataList = data?.let {
-                data["data"] as List<*>
-            }?.toMutableList()
-            dataList?.let {
-                val byteArray = dataList[1] as ByteArray
-                dataList[1] = String(byteArray)
+        when (methodName) {
+            "onUserMessage" -> {
+                val dataList = data?.let {
+                    data["data"] as List<*>
+                }?.toMutableList()
+                dataList?.let {
+                    val byteArray = dataList[1] as ByteArray
+                    dataList[1] = String(byteArray)
+                }
+                val newData = data?.toMutableMap()
+                newData?.set("data", dataList)
+                reactApplicationContext.getJSModule(
+                        DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                        .emit("${RtcMessageServiceEvent.PREFIX}$methodName",
+                                Arguments.makeNativeMap(newData))
             }
-            val newData = data?.toMutableMap()
-            newData?.set("data", dataList)
-            reactApplicationContext.getJSModule(
-                    DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-                    .emit("${RtcMessageServiceEvent.PREFIX}$methodName",
-                            Arguments.makeNativeMap(newData))
-        } else {
-            reactApplicationContext.getJSModule(
-                    DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-                    .emit("${RtcMessageServiceEvent.PREFIX}$methodName",
-                            Arguments.makeNativeMap(data))
+            "onTopicMessage" -> {
+                val dataList = data?.let {
+                    data["data"] as List<*>
+                }?.toMutableList()
+                dataList?.let {
+                    val byteArray = dataList[2] as ByteArray
+                    dataList[2] = String(byteArray)
+                }
+                val newData = data?.toMutableMap()
+                newData?.set("data", dataList)
+                reactApplicationContext.getJSModule(
+                        DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                        .emit("${RtcMessageServiceEvent.PREFIX}$methodName",
+                                Arguments.makeNativeMap(newData))
+            }
+            "onPropertyChanged" -> {
+                val dataList = data?.let {
+                    data["data"] as List<*>
+                }?.toMutableList()
+                dataList?.let {
+                    val newProps = ArrayList<Map<*, *>>()
+                    val props = dataList[0] as ArrayList<Map<*, *>>
+                    props.forEach {
+                        it.toMutableMap().let { map ->
+                            val byteArray = map["propValue"] as ByteArray
+                            val propValue = String(byteArray)
+                            map["propValue"] = propValue
+                            newProps.add(map)
+                        }
+                    }
+                    dataList[0] = newProps
+                }
+                val newData = data?.toMutableMap()
+                newData?.set("data", dataList)
+                reactApplicationContext.getJSModule(
+                        DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                        .emit("${RtcMessageServiceEvent.PREFIX}$methodName",
+                                Arguments.makeNativeMap(newData))
+            }
+            else -> {
+                reactApplicationContext.getJSModule(
+                        DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                        .emit("${RtcMessageServiceEvent.PREFIX}$methodName",
+                                Arguments.makeNativeMap(data))
+            }
         }
     }
 
@@ -58,11 +101,17 @@ class PanoRtcMessageModule (reactContext: ReactApplicationContext) : ReactContex
             function.javaMethod?.let { method ->
                 try {
                     val parameters = mutableListOf<Any?>()
-                    params?.toHashMap()?.toMutableMap()?.let {
-                        val messageStr = it["message"] as String
-                        it["message"] = messageStr.encodeToByteArray()
-                        parameters.add(it)
+                    val newParams = params?.toHashMap()?.toMutableMap()
+                    newParams?.let {
+                        it.keys.forEach { paramKey ->
+                            if (paramKey.startsWith("str_")) {
+                                val strValue = newParams.remove(paramKey) as String
+                                newParams[paramKey.substring(4, paramKey.length)] =
+                                        strValue.encodeToByteArray()
+                            }
+                        }
                     }
+                    parameters.add(newParams)
                     method.invoke(service, *parameters.toTypedArray(), PromiseCallback(callback))
                 } catch (e: Exception) {
                     e.printStackTrace()

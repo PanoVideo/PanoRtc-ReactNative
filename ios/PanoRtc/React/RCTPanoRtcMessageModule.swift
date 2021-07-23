@@ -58,7 +58,7 @@ class RCTPanoRtcMessageModule: RCTEventEmitter {
         if let `params` = params {
             let paramsValue = params as! Dictionary<String, Any>
             let tupleArray = paramsValue.map { key, value in
-                key == "message" ? (key, (value as? String)?.data(using: .utf8) as Any) : (key, value)
+                key.hasPrefix("str_") ? (String(key.dropFirst(4)), (value as? String)?.data(using: .utf8) as Any) : (key, value)
             }
             let newParams = Dictionary(uniqueKeysWithValues: tupleArray)
             service?.perform(NSSelectorFromString(methodName + "::"), with: newParams, with: PromiseCallback(resolve, reject))
@@ -74,11 +74,36 @@ extension RCTPanoRtcMessageModule: RtcMessageDelegate {
             var newData = data
             if let `data` = data {
                 if let array = data["data"]! as? [Any?] {
-                    let newArray = array.map { $0 is Data ? String(data: $0 as! Data, encoding: .utf8) as Any? : $0 }
+                    let newArray = transListData(array)
                     newData = ["data": newArray]
                 }
             }
             sendEvent(withName: "\(PanoRtcMessageDelegateHandler.PREFIX)\(methodName)", body: newData)
         }
+    }
+    
+    private func transListData(_ list: [Any?]) -> [Any?] {
+        let newlist = list.map { one -> Any? in
+            if one is Data {
+                return String(data: one as! Data, encoding: .utf8) as Any?
+            }
+            if one is [String: Any?] {
+                let newDic = (one as! [String: Any?]).mapValues { value -> Any? in
+                    if value is Data {
+                        return String(data: value as! Data, encoding: .utf8) as Any?
+                    }
+                    if value is [Any?] {
+                        return transListData(value as! [Any?])
+                    }
+                    return value
+                }
+                return newDic
+            }
+            if one is [Any?] {
+                return transListData(one as! [Any?])
+            }
+            return one
+        }
+        return newlist
     }
 }

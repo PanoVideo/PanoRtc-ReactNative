@@ -129,10 +129,11 @@ export default class ScreenShare extends Component<{}, State, any> {
       ]);
     }
 
-    let serviceFlags = new Set([
+    let serviceFlags = [
       ChannelService.Media,
       ChannelService.Whiteboard,
-    ]);
+      ChannelService.Message,
+    ];
     let channelConfig = new RtcChannelConfig(
       ChannelMode.Meeting,
       serviceFlags,

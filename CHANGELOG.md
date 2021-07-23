@@ -1,3 +1,11 @@
+## 0.9.8
+
+- Support Pano SDK to 1.5.3
+- Support RtcMessageService new apis
+- Add Message ChannelService
+- Change default VideoProfileType to Standard
+- Enhance message service demo code in audio channel example
+
 ## 0.9.7
 
 - Support Pano SDK to 1.4.4.6
