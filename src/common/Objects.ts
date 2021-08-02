@@ -37,8 +37,8 @@ export class RtcEngineConfig {
    */
   rtcServer: string;
   /**
-   * @brief @~english Whether the video codec is enabled for hardware acceleration. Default: NO.
-   *        @~chinese 视频编解码器是否启用硬件加速。默认值：否。
+   * @brief @~english Whether the video codec is enabled for hardware acceleration. Default: false.
+   *        @~chinese 视频编解码器是否启用硬件加速。默认值：false
    */
   videoCodecHwAcceleration: boolean;
   /**
@@ -71,13 +71,13 @@ export class RtcChannelConfig {
    */
   mode: ChannelMode;
   /**
-   * @brief @~english Channel service serviceFlags. Default: kPanoChannelServiceMedia | kPanoChannelServiceWhiteboard.
-   *        @~chinese 频道服务标志。默认值：kPanoChannelServiceMedia | kPanoChannelServiceWhiteboard。
+   * @brief @~english Channel service serviceFlags. Default: ChannelService.Media | ChannelService.Whiteboard | ChannelService.Message.
+   *        @~chinese 频道服务标志。默认值：ChannelService.Media | ChannelService.Whiteboard | ChannelService.Message。
    */
   serviceFlags: Array<ChannelService>;
   /**
-   * @brief @~english Whether to subscribe audio automatically. Default: YES.
-   *        @~chinese 是否自动订阅所有音频。默认值：是。
+   * @brief @~english Whether to subscribe audio automatically. Default: true.
+   *        @~chinese 是否自动订阅所有音频。默认值：true。
    */
   subscribeAudioAll: boolean;
   /**
@@ -117,17 +117,18 @@ export class RtcRenderConfig {
    */
   profileType: VideoProfileType;
   /**
-   * @~english Enable Video Source Mirror. Default: NO @~chinese  启用视频源镜像, 默认值: NO。
+   * @brief @~english Enable Video Source Mirror. Default: false.
+   *        @~chinese 启用视频源镜像, 默认值: false。
    */
   sourceMirror: boolean;
   /**
-   * @brief @~english The video scaling mode. Default: kPanoScalingFit.
-   *        @~chinese 视频缩放模式。默认值：kPanoScalingFit。
+   * @brief @~english The video scaling mode. Default: VideoScalingMode.Fit.
+   *        @~chinese 视频缩放模式。默认值：VideoScalingMode.Fit。
    */
   scalingMode: VideoScalingMode;
   /**
-   * @brief @~english Whether to enable video mirroring. Default: NO.
-   *        @~chinese 是否启用视频镜像。默认值：NO。
+   * @brief @~english Whether to enable video mirroring. Default: false.
+   *        @~chinese 是否启用视频镜像。默认值：false。
    */
   mirror: boolean;
 
@@ -149,8 +150,8 @@ export class RtcRenderConfig {
  */
 export class RtcAudioFormat {
   /**
-   * @brief @~english The audio type. Default: kPanoPCM.
-   *        @~chinese 音频类型。默认值：kPanoPCM。
+   * @brief @~english The audio type. Default: AudioType.PCM.
+   *        @~chinese 音频类型。默认值：AudioType.PCM。
    */
   type: AudioType;
   /**
@@ -187,8 +188,8 @@ export class RtcAudioFormat {
  */
 export class RtcVideoFormat {
   /**
-   * @brief @~english The video type. Default: kPanoI420.
-   *        @~chinese 视频类型。默认值：kPanoI420。
+   * @brief @~english The video type. Default: VideoType.I420.
+   *        @~chinese 视频类型。默认值：VideoType.I420。
    */
   type: VideoType;
   /**
@@ -203,26 +204,26 @@ export class RtcVideoFormat {
   height: number;
   /**
    * @~english @brief The count of video block array.
-   * @details If the video type is kPanoI420, the count should be 3.
+   * @details If the video type is VideoType.I420, the count should be 3.
    * @~chinese @brief 视频块数组的项目数。
-   * @details 如果视频类型为kPanoI420，则计数应为3。
+   * @details 如果视频类型为 VideoType.I420，则计数应为3。
    */
   count: number;
   /**
-   * @~english @brief The video block offset array. Item type: UInt32.
+   * @~english @brief The video block offset array. Item type: number.
    * @details The offsets are for the first address of the video block.
-   * @~chinese @brief 视频块偏移量数组。项目类型：UInt32。
+   * @~chinese @brief 视频块偏移量数组。项目类型：number。
    * @details 偏移量都是针对视频块首地址的。
    */
   offset: number[];
   /**
-   * @brief @~english The video block stride array. Item type: UInt32.
-   *        @~chinese 视频块步幅数组。项目类型：UInt32。
+   * @brief @~english The video block stride array. Item type: number.
+   *        @~chinese 视频块步幅数组。项目类型：number。
    */
   stride: number[];
   /**
-   * @brief @~english The video rotation degrees. Default: kPanoRotation0.
-   *        @~chinese 视频旋转角度。默认值：kPanoRotation0。
+   * @brief @~english The video rotation degrees. Default: VideoRotation.Rotation0.
+   *        @~chinese 视频旋转角度。默认值：VideoRotation.Rotation0。
    */
   rotation: VideoRotation;
 
@@ -361,7 +362,7 @@ export class RtcAudioSendStats {
    * @~chinese @brief 本地用户(麦克风采集)说话检测。
    * @details 此属性是回调统计时的瞬时值。
    */
-  inputActiveFlag: boolean; //  YES: active, NO: inactive
+  inputActiveFlag: boolean; //  true: active, false: inactive
   /**
    * @~english @brief The type of audio codec.
    * @details The propertie is the dynamic value during audio sending.
@@ -891,8 +892,8 @@ export class WBColor {
  */
 export class WBTextFormat {
   /**
-   * @brief @~english The font style, PanoWBFontStyle enum type. Default: kPanoWBFontNormal.
-   *        @~chinese 字体样式，PanoWBFontStyle 枚举类型。默认值：kPanoWBFontNormal。
+   * @brief @~english The font style, PanoWBFontStyle enum type. Default: WBFontStyle.Normal.
+   *        @~chinese 字体样式，PanoWBFontStyle 枚举类型。默认值：WBFontStyle.Normal。
    */
   style: WBFontStyle;
   /**
@@ -1018,8 +1019,8 @@ export type WBPageNumber = number;
 /** @brief @~english The face beautify option class. @~chinese 美颜选项类。 */
 export class FaceBeautifyOption {
   /**
-   * @brief @~english Whether to enable face beautify. Default: NO.
-   *        @~chinese 是否开启美颜。默认值：否。
+   * @brief @~english Whether to enable face beautify. Default: false.
+   *        @~chinese 是否开启美颜。默认值：false
    */
   enable: boolean;
   /**
@@ -1039,13 +1040,13 @@ export class FaceBeautifyOption {
  */
 export class BuiltinTransformOption {
   /**
-   * @brief @~english Whether to enable built-in transform on video. Default: NO.
-   *        @~chinese 是否开启视频内嵌变换。默认值：否。
+   * @brief @~english Whether to enable built-in transform on video. Default: false.
+   *        @~chinese 是否开启视频内嵌变换。默认值：false
    */
   enable: boolean;
   /**
-   * @brief @~english True to reset all parameters， false don't reset parameters. Default: NO.
-   *        @~chinese true 重置所有的视频形变参数， false 不重置视频形变参数。默认值：否。
+   * @brief @~english True to reset all parameters， false don't reset parameters. Default: false.
+   *        @~chinese true 重置所有的视频形变参数， false 不重置视频形变参数。默认值：false
    */
   bReset: boolean;
   /**
@@ -1112,13 +1113,13 @@ export class BuiltinTransformOption {
  */
 export class QuadTransformOption {
   /**
-   * @brief @~english Whether to enable quadrilateral transform on video. Default: NO.
-   *        @~chinese 是否开启视频四边形变换。默认值：否。
+   * @brief @~english Whether to enable quadrilateral transform on video. Default: false.
+   *        @~chinese 是否开启视频四边形变换。默认值：false
    */
   enable: boolean;
   /**
-   * @brief @~english True to reset all quadrilateral transform parameters， false don't reset quadrilateral transform parameters. Default: NO.
-   *        @~chinese true 重置所有的视频四边形形变参数， false 不重置视频四边形形变参数。默认值：否。
+   * @brief @~english True to reset all quadrilateral transform parameters， false don't reset quadrilateral transform parameters. Default: false.
+   *        @~chinese true 重置所有的视频四边形形变参数， false 不重置视频四边形形变参数。默认值：false
    */
   bReset: boolean;
   /**
@@ -1190,8 +1191,8 @@ export class FeedbackInfo {
    */
   extraInfo?: string;
   /**
-   * @brief @~english Whether to upload logs. Default: NO.
-   *        @~chinese 是否上传日志。默认值：否。
+   * @brief @~english Whether to upload logs. Default: false.
+   *        @~chinese 是否上传日志。默认值：false
    */
   uploadLogs: boolean;
 
@@ -1217,8 +1218,8 @@ export class FeedbackInfo {
  */
 export class RtcAudioMixingConfig {
   /**
-   * @brief @~english Enable publish. Default: YES
-   *        @~chinese 是否发送。默认值：是。
+   * @brief @~english Enable publish. Default: true
+   *        @~chinese 是否发送。默认值：true。
    */
   enablePublish: boolean;
   /**
@@ -1229,8 +1230,8 @@ export class RtcAudioMixingConfig {
    */
   publishVolume: number;
   /**
-   * @brief @~english Enable loopback. Default: YES
-   *    @~chinese 是否发送。默认值：是。
+   * @brief @~english Enable loopback. Default: true
+   *    @~chinese 是否发送。默认值：true。
    */
   enableLoopback: boolean;
   /**
@@ -1246,8 +1247,8 @@ export class RtcAudioMixingConfig {
    */
   cycle: number;
   /**
-   * @brief @~english YES: Replace microphone data. NO: Mix with microphone data. Default: NO.
-   *        @~chinese 是: 替换麦克风数据。否: 与麦克风数据混音。默认值：否。
+   * @brief @~english true: Replace microphone data. false: Mix with microphone data. Default: false.
+   *        @~chinese 是: 替换麦克风数据。否: 与麦克风数据混音。默认值：false
    */
   replaceMicrophone: boolean;
 
@@ -1278,8 +1279,8 @@ export class RtcSnapshotVideoOption {
    */
   format: ImageFileFormat;
   /**
-   * @brief @~english Whether to mirror. Default: NO.
-   *        @~chinese 是否镜像。默认值：否。
+   * @brief @~english Whether to mirror. Default: false.
+   *        @~chinese 是否镜像。默认值：false
    */
   mirror: boolean;
 
