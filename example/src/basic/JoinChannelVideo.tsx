@@ -15,6 +15,7 @@ import RtcEngineKit, {
   RtcSurfaceView,
   ChannelMode,
   ChannelService,
+  ResultCode,
 } from '@pano.video/panortc-react-native-sdk';
 import { ChannelInfo } from './ChannelInfo';
 const config = require('../../pano.config.json');
@@ -56,24 +57,26 @@ export default class JoinChannelVideo extends Component<{}, State, any> {
   _addListeners = () => {
     this._engine?.addListener('onChannelJoinConfirm', (result) => {
       console.info('onChannelJoinConfirm', result);
-      this.setState({ isJoined: true }, () => {
-        this._engine
-          ?.startVideo(this.localViewRef)
-          .then((result) => {
-            console.info('startVideo', result);
-          })
-          .catch((err) => {
-            console.warn('startVideo', err);
-          });
-        this._engine
-          ?.startAudio()
-          .then((result) => {
-            console.info('startAudio', result);
-          })
-          .catch((err) => {
-            console.warn('startAudio', err);
-          });
-      });
+      if (result == ResultCode.OK) {
+        this.setState({ isJoined: true }, () => {
+          this._engine
+            ?.startVideo(this.localViewRef)
+            .then((result) => {
+              console.info('startVideo', result);
+            })
+            .catch((err) => {
+              console.warn('startVideo', err);
+            });
+          this._engine
+            ?.startAudio()
+            .then((result) => {
+              console.info('startAudio', result);
+            })
+            .catch((err) => {
+              console.warn('startAudio', err);
+            });
+        });
+      }
     });
     this._engine?.addListener('onChannelLeaveIndication', (result) => {
       console.info('onChannelLeaveIndication', result);

@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Support Pano SDK to 1.5.6
+
 ## 0.9.9
 
 - Support Pano SDK to 1.5.4

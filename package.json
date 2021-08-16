@@ -1,6 +1,6 @@
 {
   "name": "@pano.video/panortc-react-native-sdk",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "description": "PanoRtc SDK For React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

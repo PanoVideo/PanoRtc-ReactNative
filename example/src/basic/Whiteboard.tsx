@@ -18,6 +18,7 @@ import RtcEngineKit, {
   RtcWhiteboard,
   RtcAnnotationManager,
   RtcAnnotation,
+  ResultCode,
 } from '@pano.video/panortc-react-native-sdk';
 import { ChannelInfo } from './ChannelInfo';
 
@@ -63,45 +64,55 @@ export default class Whiteboard extends Component<{}, State, any> {
   _addListeners = () => {
     this._engine?.addListener('onChannelJoinConfirm', (result) => {
       console.info('onChannelJoinConfirm', result);
-      this.setState({ isJoined: true }, () => {
-        this._engine
-          ?.whiteboardEngine()
-          .then((result) => {
-            console.info('whiteboardEngine', result);
-            this._whiteboard = result;
-            this._whiteboard?.open(this.whiteboardView).then((result) => {
-              console.info('open whiteboard ', result);
-              this._whiteboard?.setToolType(WBToolType.Path).then((result) => {
-                console.info('setToolType ', result);
-              });
-              this._whiteboard
-                ?.addImageFile(
-                  'https://www.pano.video/assets/img/optimized_logo-pano.png'
-                )
-                .then((result) => {
-                  console.info('addImageFile ', result);
+      if (result == ResultCode.OK) {
+        this.setState({ isJoined: true }, () => {
+          this._engine
+            ?.whiteboardEngine()
+            .then((result) => {
+              console.info('whiteboardEngine', result);
+              this._whiteboard = result;
+              this._whiteboard?.open(this.whiteboardView).then((result) => {
+                console.info('open whiteboard ', result);
+                this._whiteboard
+                  ?.setToolType(WBToolType.Path)
+                  .then((result) => {
+                    console.info('setToolType ', result);
+                  });
+                this._whiteboard
+                  ?.addImageFile(
+                    'https://www.pano.video/assets/img/optimized_logo-pano.png'
+                  )
+                  .then((result) => {
+                    console.info('addImageFile ', result);
+                  });
+                this._whiteboard?.startShareVision().then((result) => {
+                  console.info('startShareVision ', result);
                 });
-              this._whiteboard?.startShareVision().then((result) => {
-                console.info('startShareVision ', result);
               });
+              this._whiteboard?.addListener(
+                'onVisionShareStarted',
+                (userId) => {
+                  console.info('onVisionShareStarted', userId);
+                  //this._whiteboard?.startFollowVision()
+                }
+              );
+              this._whiteboard?.addListener(
+                'onVisionShareStopped',
+                (userId) => {
+                  console.info('onVisionShareStopped', userId);
+                  //this._whiteboard?.stopFollowVision()
+                }
+              );
+              this._whiteboard?.addListener('onMessage', (userId, message) => {
+                console.info('onMessage userId : ', userId);
+                console.info('onMessage message : ', message);
+              });
+            })
+            .catch((err) => {
+              console.warn('whiteboardEngine', err);
             });
-            this._whiteboard?.addListener('onVisionShareStarted', (userId) => {
-              console.info('onVisionShareStarted', userId);
-              //this._whiteboard?.startFollowVision()
-            });
-            this._whiteboard?.addListener('onVisionShareStopped', (userId) => {
-              console.info('onVisionShareStopped', userId);
-              //this._whiteboard?.stopFollowVision()
-            });
-            this._whiteboard?.addListener('onMessage', (userId, message) => {
-              console.info('onMessage userId : ', userId);
-              console.info('onMessage message : ', message);
-            });
-          })
-          .catch((err) => {
-            console.warn('whiteboardEngine', err);
-          });
-      });
+        });
+      }
     });
     this._engine?.addListener('onChannelLeaveIndication', (result) => {
       console.info('onChannelLeaveIndication', result);

@@ -15,6 +15,7 @@ import RtcEngineKit, {
   ChannelService,
   OptionType,
   RtcSurfaceView,
+  ResultCode,
 } from '@pano.video/panortc-react-native-sdk';
 import { ChannelInfo } from './ChannelInfo';
 
@@ -59,24 +60,26 @@ export default class ScreenShare extends Component<{}, State, any> {
   _addListeners = () => {
     this._engine?.addListener('onChannelJoinConfirm', (result) => {
       console.info('onChannelJoinConfirm', result);
-      this.setState({ isJoined: true });
-      this._engine
-        ?.startAudio()
-        .then((result) => {
-          console.info('startAudio', result);
-        })
-        .catch((err) => {
-          console.warn('startAudio', err);
-        });
-      this._engine?.setOption(true, OptionType.ScreenOptimization);
-      this._engine
-        ?.startScreen()
-        .then((result) => {
-          console.info('startScreen', result);
-        })
-        .catch((err) => {
-          console.warn('startScreen', err);
-        });
+      if (result == ResultCode.OK) {
+        this.setState({ isJoined: true });
+        this._engine
+          ?.startAudio()
+          .then((result) => {
+            console.info('startAudio', result);
+          })
+          .catch((err) => {
+            console.warn('startAudio', err);
+          });
+        this._engine?.setOption(true, OptionType.ScreenOptimization);
+        this._engine
+          ?.startScreen()
+          .then((result) => {
+            console.info('startScreen', result);
+          })
+          .catch((err) => {
+            console.warn('startScreen', err);
+          });
+      }
     });
     this._engine?.addListener('onChannelLeaveIndication', (result) => {
       console.info('onChannelLeaveIndication', result);

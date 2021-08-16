@@ -710,69 +710,69 @@ export enum WBOptionType {
  */
 export enum OptionType {
   /**
-   * @~english Face beacutify option, object type is PanoFaceBeautifyOption.
-   * @~chinese 美颜可选项，对象类型是 PanoFaceBeautifyOption 。
+   * @~english Face beacutify option, object type is FaceBeautifyOption.
+   * @~chinese 美颜可选项，对象类型是 FaceBeautifyOption 。
    */
   FaceBeautify = 0,
   /**
-   * @~english Logs upload option, object type is NSNumber with BOOL value.
-   * @~chinese 日志上传可选项，对象类型是带 BOOL 值的 NSNumber 。
+   * @~english Logs upload option, object type is boolean.
+   * @~chinese 日志上传可选项，对象类型是 boolean 。
    */
   UploadLogs = 1,
   /**
-   * @~english Audio dump file upload option, object type is NSNumber with BOOL value.
-   * @~chinese 音频转储文件上传选项，对象类型是带 BOOL 值的 NSNumber 。
+   * @~english Audio dump file upload option, object type is boolean.
+   * @~chinese 音频转储文件上传选项，对象类型是 boolean 。
    */
   UploadAudioDump = 2,
   /**
-   * @~english Audio equalization option, object type is NSNumber with PanoAudioEqualizationMode value.
-   * @~chinese 音频均衡器选项，对象类型是带 PanoAudioEqualizationMode 值的 NSNumber 。
+   * @~english Audio equalization option, object type is AudioEqualizationMode.
+   * @~chinese 音频均衡器选项，对象类型是 AudioEqualizationMode。
    */
   AudioEqualizationMode = 3,
   /**
-   * @~english Audio reverb option, object type is NSNumber with PanoAudioReverbMode value.
-   * @~chinese 音频混响器选项，对象类型是带 PanoAudioReverbMode 值的 NSNumber 。
+   * @~english Audio reverb option, object type is AudioReverbMode.
+   * @~chinese 音频混响器选项，对象类型是 AudioReverbMode。
    */
   AudioReverbMode = 4,
   /**
-   * @~english Adjust video capture frame rate option, object type is NSNumber with PanoVideoFrameRateType value.
-   * @~chinese 调整视频采集帧率选项，对象类型是带 PanoVideoFrameRateType 值的 NSNumber 。
+   * @~english Adjust video capture frame rate option, object type is VideoFrameRateType.
+   * @~chinese 调整视频采集帧率选项，对象类型是 VideoFrameRateType。
    */
   VideoFrameRate = 5,
   /**
-   * @~english Audio ear Monitoring enable option, object type is NSNumber with BOOL value.
-   * @~chinese 音频耳返开关选项，对象类型是带 BOOL 值的 NSNumber 。
+   * @~english Audio ear Monitoring enable option, object type is boolean.
+   * @~chinese 音频耳返开关选项，对象类型是 boolean 。
    */
   AudioEarMonitoring = 6,
   /**
    * @deprecated
-   * @~english (Deprecated) Internal video transform option, object type is PanoBuiltinTransformOption.
-   * @~chinese (已废弃)视频内嵌变换可选项，对象类型是 PanoBuiltinTransformOption 。
+   * @~english (Deprecated) Internal video transform option, object type is BuiltinTransformOption.
+   * @~chinese (已废弃)视频内嵌变换可选项，对象类型是 BuiltinTransformOption 。
    */
   BuiltinTransform = 7,
   /**
-   * @~english Enable upload PANO SDK logs when failed to join channel, object type is NSNumber with BOOL value.
+   * @~english Enable upload PANO SDK logs when failed to join channel, object type is boolean.
    * @note This flag has been set by default.
-   * @~chinese 允许加会失败时上传PANO日志，对象类型是带 BOOL 值的 NSNumber 。
+   * @~chinese 允许加会失败时上传PANO日志，对象类型是 boolean 。
    * @note 此标记设置后会一直有效。默认已经启用。
    */
   UploadLogsAtFailure = 8,
   /**
    * @~english Allow SDK to adjust video quality according to CPU performance.
-   *           Object type is NSNumber with BOOL value. Default value is ture. Configurable before join room.
+   *           Object type is boolean. Default value is ture. Configurable before join room.
    * @note We do not recommend disabling CPU adaption in general case.
-   * @~chinese 允许SDK根据CPU性能调整视频质量。对象类型是带 BOOL 值的 NSNumber 。默认值是true。仅在加入房间前可以配置。
+   * @~chinese 允许SDK根据CPU性能调整视频质量。对象类型是 boolean 。默认值是true。仅在加入房间前可以配置。
    * @note 通常场景下不建议关闭此功能。
    */
   CpuAdaption = 9,
   /**
-   * @~english Audio profile option, object type is PanoRtcAudioProfile.
-   * @~chinese 音频配置选项，对象类型是 PanoRtcAudioProfile 。
+   * @~english Audio profile option, object type is RtcAudioProfile.
+   * @~chinese 音频配置选项，对象类型是 RtcAudioProfile 。
    */
   AudioProfile = 10,
   /**
-   * @~english Quadrilateral video transform option, object type is PanoQuadTransformOption.
-   * @~chinese 视频四边形变换可选项，对象类型是 PanoQuadTransformOption 。
+   * @~english Quadrilateral video transform option, object type is QuadTransformOption.
+   * @~chinese 视频四边形变换可选项，对象类型是 QuadTransformOption 。
    */
   QuadTransform = 11,
   /**

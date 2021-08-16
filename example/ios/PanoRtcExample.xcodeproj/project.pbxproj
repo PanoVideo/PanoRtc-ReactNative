@@ -454,7 +454,7 @@
 				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
 				"${BUILT_PRODUCTS_DIR}/FBReactNativeSpec/FBReactNativeSpec.framework",
 				"${BUILT_PRODUCTS_DIR}/Folly/folly.framework",
-				"${PODS_ROOT}/PanoRtc_iOS/Pano_iOS_SDK_v1_5_4/iOS/Release-iphoneos/PanoRtc.framework",
+				"${PODS_ROOT}/PanoRtc_iOS/Pano_iOS_SDK_v1_5_6/iOS/Release-iphoneos/PanoRtc.framework",
 				"${BUILT_PRODUCTS_DIR}/RCTTypeSafety/RCTTypeSafety.framework",
 				"${BUILT_PRODUCTS_DIR}/RNCMaskedView/RNCMaskedView.framework",
 				"${BUILT_PRODUCTS_DIR}/RNGestureHandler/RNGestureHandler.framework",
@@ -478,7 +478,7 @@
 				"${BUILT_PRODUCTS_DIR}/Yoga/yoga.framework",
 				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
 				"${BUILT_PRODUCTS_DIR}/react-native-safe-area-context/react_native_safe_area_context.framework",
-				"${PODS_ROOT}/PanoRtc_iOS/Pano_iOS_SDK_v1_5_4/iOS/Release-iphoneos/PanoReplayKitExt.framework",
+				"${PODS_ROOT}/PanoRtc_iOS/Pano_iOS_SDK_v1_5_6/iOS/Release-iphoneos/PanoReplayKitExt.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

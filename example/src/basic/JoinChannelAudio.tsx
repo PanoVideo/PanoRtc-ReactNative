@@ -15,6 +15,7 @@ import RtcEngineKit, {
   ChannelService,
   MessageServiceState,
   RtcMessageService,
+  ResultCode,
 } from '@pano.video/panortc-react-native-sdk';
 import { ChannelInfo } from './ChannelInfo';
 
@@ -59,15 +60,17 @@ export default class JoinChannelAudio extends Component<{}, State, any> {
   _addListeners = () => {
     this._engine?.addListener('onChannelJoinConfirm', (result) => {
       console.info('onChannelJoinConfirm', result);
-      this.setState({ isJoined: true });
-      this._engine
-        ?.startAudio()
-        .then((result) => {
-          console.info('startAudio', result);
-        })
-        .catch((err) => {
-          console.warn('startAudio', err);
-        });
+      if (result == ResultCode.OK) {
+        this.setState({ isJoined: true });
+        this._engine
+          ?.startAudio()
+          .then((result) => {
+            console.info('startAudio', result);
+          })
+          .catch((err) => {
+            console.warn('startAudio', err);
+          });
+      }
     });
     this._engine?.addListener('onChannelLeaveIndication', (result) => {
       console.info('onChannelLeaveIndication', result);
