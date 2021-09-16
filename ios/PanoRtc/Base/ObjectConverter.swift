@@ -279,6 +279,12 @@ extension PanoWBDocContents {
         if let urls = map["urls"] as? [String] {
             self.urls = urls
         }
+        if let thumbUrls = map["thumbUrls"] as? [String] {
+            self.thumbUrls = thumbUrls
+        }
+        if let docId = map["docId"] as? String {
+            self.docId = docId
+        }
     }
 }
 
@@ -292,6 +298,36 @@ extension PanoWBConvertConfig {
         }
         if let needThumb = map["needThumb"] as? Bool {
             self.needThumb = needThumb
+        }
+    }
+}
+
+extension PanoWBVisionConfig {
+    convenience init(map: Dictionary<String, Any>) {
+        self.init()
+        if let width = map["width"] as? UInt32 {
+            self.width = width
+        }
+        if let height = map["height"] as? UInt32 {
+            self.height = height
+        }
+        if let limited = map["limited"] as? Bool {
+            self.limited = limited
+        }
+    }
+}
+
+extension PanoWBDocExtHtml {
+    convenience init(map: Dictionary<String, Any>) {
+        self.init()
+        if let name = map["name"] as? String {
+            self.name = name
+        }
+        if let url = map["url"] as? String {
+            self.url = url
+        }
+        if let thumbUrls = map["thumbUrls"] as? [String] {
+            self.thumbUrls = thumbUrls
         }
     }
 }

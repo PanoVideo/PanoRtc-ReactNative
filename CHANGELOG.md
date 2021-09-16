@@ -1,3 +1,13 @@
+## 1.0.2
+
+- Support Pano SDK to 1.6.1.1
+- Add Whiteboard addDocWithExtHtml api
+
+## 1.0.1
+
+- Support Pano SDK to 1.6.0.0
+- Support Whiteboard new apis
+
 ## 1.0.0
 
 - Support Pano SDK to 1.5.6

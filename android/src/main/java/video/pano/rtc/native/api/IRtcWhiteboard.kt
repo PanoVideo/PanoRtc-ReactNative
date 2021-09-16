@@ -84,6 +84,8 @@ interface IRtcWhiteboard {
 
     fun addDoc(params: Map<String, *>, callback: Callback)
 
+    fun addDocWithExtHtml(params: Map<String, *>, callback: Callback)
+
     fun createDocWithImages(params: Map<String, *>, callback: Callback)
 
     fun createDocWithFilePath(params: Map<String, *>, callback: Callback)
@@ -100,11 +102,17 @@ interface IRtcWhiteboard {
 
     fun getFileInfo(params: Map<String, *>, callback: Callback)
 
+    fun sendMessageToExternalHtml(params: Map<String, *>, callback: Callback)
+
     fun clearContents(params: Map<String, *>, callback: Callback)
 
     fun clearUserContents(params: Map<String, *>, callback: Callback)
 
     fun snapshot(params: Map<String, *>, callback: Callback)
+
+    fun initVision(params: Map<String, *>, callback: Callback)
+    
+    fun resetVision(callback: Callback)
 
     fun startShareVision(callback: Callback)
 

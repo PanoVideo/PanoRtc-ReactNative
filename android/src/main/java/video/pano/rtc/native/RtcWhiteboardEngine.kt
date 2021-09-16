@@ -239,7 +239,19 @@ class RtcWhiteboardEngine(
         val contents = params["contents"] as Map<*, *>
         callback.success(whiteboard?.addDoc(WBDocContents().apply {
             this.name = contents["name"] as String
+            this.docId = contents["docId"] as String
             this.urls = contents["urls"] as List<String>
+            this.thumbUrls = contents["thumbUrls"] as List<String>
+        }))
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun addDocWithExtHtml(params: Map<String, *>, callback: Callback) {
+        val extHtml = params["extHtml"] as Map<*, *>
+        callback.success(whiteboard?.addDoc(WBDocExtHtml().apply {
+            this.name = extHtml["name"] as String
+            this.url = extHtml["url"] as String
+            this.thumbUrls = extHtml["thumbUrls"] as List<String>
         }))
     }
 
@@ -296,6 +308,12 @@ class RtcWhiteboardEngine(
                 "creator" to info?.creator.toString()))
     }
 
+    override fun sendMessageToExternalHtml(params: Map<String, *>, callback: Callback) {
+        val fileId = params["fileId"] as String
+        val msg = params["msg"] as String
+        callback.success(whiteboard?.sendMessageToExternalHtml(fileId, msg))
+    }
+
     override fun clearContents(params: Map<String, *>, callback: Callback) {
         val curPage = params["curPage"] as Boolean
         val type = (params["type"] as Number).toInt()
@@ -313,6 +331,18 @@ class RtcWhiteboardEngine(
         val mode = (params["mode"] as Number).toInt()
         val outputDir = params["outputDir"] as String
         callback.success(whiteboard?.snapshot(getWBSnapshotMode(mode), outputDir))
+    }
+
+    override fun initVision(params: Map<String, *>, callback: Callback) {
+        callback.success(whiteboard?.initVision(WBVisionConfig().apply {
+            this.width = (params["width"] as Number).toInt()
+            this.height = (params["height"] as Number).toInt()
+            this.limited = params["limited"] as Boolean
+        }))
+    }
+
+    override fun resetVision(callback: Callback) {
+        callback.success(whiteboard?.resetVision())
     }
 
     override fun startShareVision(callback: Callback) {

@@ -952,10 +952,57 @@ export class WBDocContents {
    *        @~chinese url地址数组（仅支持远程url）。
    */
   urls: string[];
+  /**
+   * @brief @~english thumbnail url array (remote url only)
+   *        @~chinese thumbnail url地址数组（仅支持远程url）。
+   */
+  thumbUrls: string[];
+  /**
+   * @brief @~english upload doc ID.
+   *        @~chinese 上传文档的ID。
+   */
+  docId: string;
 
-  constructor(name: string, urls: string[]) {
+  constructor(
+    name: string,
+    urls: string[],
+    thumbUrls: string[],
+    docId: string = ''
+  ) {
     this.name = name;
     this.urls = urls;
+    this.thumbUrls = thumbUrls;
+    this.docId = docId;
+  }
+}
+
+/**
+ * @brief @~english Whiteboard doc external Html content. @~chinese 白板文件外部Html内容。
+ * @note
+ * @~english If need synchronize web contents, the web page must integrate PanoExternalHtml SDK.
+ * @~chinese 如果需要同步网页内容，网页需要集成PanoExternalHtml SDK
+ */
+export class WBDocExtHtml {
+  /**
+   * @brief @~english Whiteboard file name
+   *        @~chinese 白板文件名称。
+   */
+  name: string;
+  /**
+   * @brief @~english url (remote url only)
+   *        @~chinese url地址（仅支持远程url）。
+   */
+  url: string;
+  /**
+   * @brief @~english thumbnail url array (remote url only)
+   *        @~chinese thumbnail url地址数组（仅支持远程url）。
+   */
+  thumbUrls: string[];
+
+  constructor(name: string = '', url: string, thumbUrls: string[]) {
+    this.name = name;
+    this.url = url;
+    this.thumbUrls = thumbUrls;
   }
 }
 
@@ -1009,6 +1056,28 @@ export interface WBDocInfo {
    *        @~chinese 白板文件类型。
    */
   type: WBDocType;
+}
+
+/**
+ * @brief @~english Whiteboard vision configuration.
+ *        @~chinese 白板视口配置。
+ */
+export interface WBVisionConfig {
+  /**
+   * @brief @~english Whiteboard width
+   *        @~chinese 白板宽度。
+   */
+  width: number;
+  /**
+   * @brief @~english Whiteboard height
+   *        @~chinese 白板高度。
+   */
+  height: number;
+  /**
+   * @brief @~english Whether whiteboard size is limited
+   *        @~chinese 白板大小是否固定。
+   */
+  limited: boolean;
 }
 
 /**

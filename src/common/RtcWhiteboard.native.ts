@@ -2,8 +2,10 @@ import type {
   WBColor,
   WBConvertConfig,
   WBDocContents,
+  WBDocExtHtml,
   WBDocInfo,
   WBStamp,
+  WBVisionConfig,
 } from './Objects';
 import {
   ResultCode,
@@ -794,6 +796,24 @@ export default class RtcWhiteboard implements RtcWhiteboardInterface {
 
   /**
    * @~english
+   * @brief Add a new whiteboard file with external html
+   * @param contents Whiteboard file contents with external html
+   * @return
+   *    - Current whiteborad file ID, if fail return nullptr
+   * @note PanoWhiteboard has created doc with whiteboard file ID "default" when created
+   * @~chinese
+   * @brief 使用外部Html添加新的白板文件
+   * @param contents 外部Html的白板文件内容
+   * @return
+   *    - 当前白板文件ID，如果失败返回nullptr
+   * @note PanoWhiteboard创建时会生成白板文件ID为"default"的白板文件
+   */
+  addDocWithExtHtml(extHtml: WBDocExtHtml): Promise<string> {
+    return this._callMethod('addDocWithExtHtml', { extHtml });
+  }
+
+  /**
+   * @~english
    * @brief Create new whiteboard file with some background images.
    * @param imageUrls Background image url array (remote url only).
    * @return
@@ -943,6 +963,30 @@ export default class RtcWhiteboard implements RtcWhiteboardInterface {
 
   /**
    * @~english
+   * @brief send custom message to external html
+   * @param fileId Whiteboard file ID
+   * @param msg custom message
+   * @param length length of custom message
+   * @return
+   *    - kPanoResultOK: Success
+   *     - Others: Fail
+   * @note only support external html doc
+   * @~chinese
+   * @brief 发送自定义消息到外部HTML页面
+   * @param fileId 白板文件ID
+   * @param msg 自定义消息
+   * @param length 自定义消息长度
+   * @return
+   *    - kPanoResultOK: 成功
+   *    - 其他: 失败
+   * @note 只支持外部HTML
+   */
+  sendToExternalHtml(fileId: string, msg: string): Promise<ResultCode> {
+    return this._callMethod('sendToExternalHtml', { fileId, msg });
+  }
+
+  /**
+   * @~english
    * @brief clear whiteboard content.
    * @param curPage true: clear current page only; false: clear all pages.
    * @param type WBClearType enum type.
@@ -1081,6 +1125,40 @@ export default class RtcWhiteboard implements RtcWhiteboardInterface {
    */
   snapshot(mode: WBSnapshotMode, outputDir: string): Promise<ResultCode> {
     return this._callMethod('snapshot', { mode, outputDir });
+  }
+
+  /**
+   * @~english
+   * @brief Configure whiteboard initial size
+   * @param config config param
+   * @return
+   *    - OK: Success
+   *    - Others: Fail
+   * @~chinese
+   * @brief 设置白板初始大小
+   * @param config 配置参数
+   * @return
+   *   - OK： 成功
+   *   - Others: 失败
+   */
+  initVision(config: WBVisionConfig): Promise<ResultCode> {
+    return this._callMethod('initVision', { config });
+  }
+
+  /**
+   * @~english
+   * @brief Reset vision of current page
+   * @return
+   *   - OK: Success
+   *   - Others: Failure
+   * @~chinese
+   * @brief 重置当前页视角
+   * @return
+   *   - OK: 成功
+   *   - Others: 失败
+   */
+  resetVision(): Promise<ResultCode> {
+    return this._callMethod('resetVision');
   }
 
   /**
@@ -1334,6 +1412,8 @@ interface RtcWhiteboardInterface {
 
   addDoc(contents: WBDocContents): Promise<string>;
 
+  addDocWithExtHtml(extHtml: WBDocExtHtml): Promise<string>;
+
   createDocWithImages(urls: string[]): Promise<string>;
 
   createDocWithFilePath(
@@ -1353,6 +1433,8 @@ interface RtcWhiteboardInterface {
 
   getFileInfo(fileId: string): Promise<WBDocInfo>;
 
+  sendToExternalHtml(fileId: string, msg: string): Promise<ResultCode>;
+
   clearContents(curPage: boolean, type: WBClearType): Promise<ResultCode>;
 
   clearUserContents(
@@ -1370,6 +1452,10 @@ interface RtcWhiteboardInterface {
   setCurrentScaleFactor(scale: number): Promise<ResultCode>;
 
   snapshot(mode: WBSnapshotMode, outputDir: string): Promise<ResultCode>;
+
+  initVision(config: WBVisionConfig): Promise<ResultCode>;
+
+  resetVision(): Promise<ResultCode>;
 
   startShareVision(): Promise<ResultCode>;
 

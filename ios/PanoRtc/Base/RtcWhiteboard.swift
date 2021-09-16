@@ -81,6 +81,8 @@ protocol RtcWhiteboardInterfce {
     
     func addDoc(_ params: NSDictionary, _ callback: Callback)
     
+    func addDocWithExtHtml(_ params: NSDictionary, _ callback: Callback)
+    
     func createDocWithImages(_ params: NSDictionary, _ callback: Callback)
     
     func createDocWithFilePath(_ params: NSDictionary, _ callback: Callback)
@@ -97,6 +99,8 @@ protocol RtcWhiteboardInterfce {
     
     func getFileInfo(_ params: NSDictionary, _ callback: Callback)
     
+    func sendToExternalHtml(_ params: NSDictionary, _ callback: Callback)
+    
     func clearContents(_ params: NSDictionary, _ callback: Callback)
     
     func clearUserContents(_ params: NSDictionary, _ callback: Callback)
@@ -110,6 +114,10 @@ protocol RtcWhiteboardInterfce {
     func setCurrentScaleFactor(_ params: NSDictionary, _ callback: Callback)
     
     func snapshot(_ params: NSDictionary, _ callback: Callback)
+    
+    func initVision(_ params: NSDictionary, _ callback: Callback)
+    
+    func resetVision(_ params: NSDictionary, _ callback: Callback)
     
     func startFollowVision(_ params: NSDictionary, _ callback: Callback)
     
@@ -318,6 +326,10 @@ class RtcWhiteboard: NSObject, RtcWhiteboardInterfce {
         callback.resolve(self[params["whiteboardId"] as! String]) { $0.addDoc(PanoWBDocContents(map: params["contents"] as! [String: Any])) }
     }
     
+    @objc func addDocWithExtHtml(_ params: NSDictionary, _ callback: Callback) {
+        callback.resolve(self[params["whiteboardId"] as! String]) { $0.addDoc(with:PanoWBDocExtHtml(map: params["extHtml"] as! [String: Any])) }
+    }
+    
     @objc func createDocWithImages(_ params: NSDictionary, _ callback: Callback) {
         callback.resolve(self[params["whiteboardId"] as! String]) { $0.createDoc(withImages: params["urls"] as! [String]) }
     }
@@ -360,6 +372,12 @@ class RtcWhiteboard: NSObject, RtcWhiteboardInterfce {
         }
     }
     
+    @objc func sendToExternalHtml(_ params: NSDictionary, _ callback: Callback) {
+        callback.code(
+            self[params["whiteboardId"] as! String]?.send(toExternalHtml: params["fileId"] as! String,
+                                                          message: params["msg"] as! String))
+    }
+    
     @objc func clearContents(_ params: NSDictionary, _ callback: Callback) {
         callback.code(
             self[params["whiteboardId"] as! String]?.clearContents(params["curPage"] as! Bool,
@@ -393,6 +411,14 @@ class RtcWhiteboard: NSObject, RtcWhiteboardInterfce {
         callback.code(
             self[params["whiteboardId"] as! String]?.snapshot(PanoWBSnapshotMode(rawValue: params["mode"] as! Int)!,
                              path: params["outputDir"] as! String))
+    }
+    
+    @objc func initVision(_ params: NSDictionary, _ callback: Callback) {
+        callback.code(self[params["whiteboardId"] as! String]?.initVision(PanoWBVisionConfig(map: params["config"] as! [String: Any])))
+    }
+    
+    @objc func resetVision(_ params: NSDictionary, _ callback: Callback) {
+        callback.code(self[params["whiteboardId"] as! String]?.resetVision())
     }
     
     @objc func startFollowVision(_ params: NSDictionary, _ callback: Callback) {

@@ -416,6 +416,16 @@ export type DocThumbnailReadyCallback =
    * @param urls 缩略图url数组
    */
   (fileId: string, urls: string[]) => void;
+export type ExternalHtmlMessageReceivedCallback =
+  /**
+   * @~english
+   * @param msg received message
+   * @param fileId Whiteboard file ID
+   * @~chinese
+   * @param msg 收到的自定义消息
+   * @param fileId 白板文件ID
+   */
+  (msg: string, fileId: string) => void;
 export type UserIdWithStreamIdCallback =
   /**
    * @~english
@@ -1164,6 +1174,16 @@ export interface RtcWhiteboardEventHandler {
    * @event onDocThumbnailReady
    */
   onDocThumbnailReady: DocThumbnailReadyCallback;
+
+  /**
+   * @~english
+   * @brief Notification of custom message received from external html
+   * @event ExternalHtmlMessageReceivedCallback
+   * @~chinese
+   * @brief 外部Html消息通知
+   * @event ExternalHtmlMessageReceivedCallback
+   */
+  onExternalHtmlMessageReceived: ExternalHtmlMessageReceivedCallback;
 
   /**
    * @~english

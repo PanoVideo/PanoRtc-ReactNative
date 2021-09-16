@@ -71,7 +71,18 @@ export enum ResultCode {
    * @~english The operation thread is wrong. @~chinese 操作的线程错误。
    */
   WrongThread = -15,
-
+  /**
+   * @~english The operation thread is timeout. @~chinese 操作超时。
+   */
+  Timeout = -16,
+  /**
+   * @~english The operation thread is aborted. @~chinese 操作终止。
+   */
+  Aborted = -17,
+  /**
+   * @~english Too many operations. @~chinese 操作次数过多。
+   */
+  TooManyOps = -18,
   /**
    * @~english Authentication failed. @~chinese 认证失败。
    */

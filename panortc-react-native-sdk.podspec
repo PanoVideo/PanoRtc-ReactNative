@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.swift_version = "5.0"
   
   s.dependency "React-Core"
-  s.dependency "PanoRtc_iOS", "1.5.6"
+  s.dependency "PanoRtc_iOS", "1.6.1.1"
 end
